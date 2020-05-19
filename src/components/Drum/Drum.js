@@ -11,7 +11,7 @@ function Drum() {
         if (keyCode === 32 || (keyCode >= 65 && keyCode <= 90)) {
             const keys = Array.from(document.querySelectorAll('.clip'));
             keys.forEach(pad => {
-                if (pad.getAttribute('id').toLowerCase() === key) {
+                if (pad.getAttribute('id').toLowerCase() === key.toLowerCase()) {
                     pad.parentElement.classList.remove("clicked");
                     setTimeout(() => {
                         pad.parentElement.classList.add("clicked");
