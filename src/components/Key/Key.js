@@ -21,12 +21,11 @@ function Key(props) {
         }
         setClick(true);
     }
-
     return (
         <div className="column">
-            <div id={props.letter} className={'drum-pad box ' + props.color + (click ? "" : " clicked")} onClick={handleClick}>
+            <div id={props.letter} data-name={props.name} className={'drum-pad box ' + props.color + (click ? "" : " clicked")} onClick={handleClick}>
                 <audio className="clip" id={props.letter}
-                    src={props.sound}>
+                    src={require('../../sounds/' + props.name + ".wav")}>
                     Your browser does not support the
                     <code>audio</code> element.
                 </audio>

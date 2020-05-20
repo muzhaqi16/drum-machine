@@ -2,8 +2,17 @@ import React, { useEffect, useCallback } from 'react'
 import Key from '../Key/';
 import './style.css';
 
-// const keys = ['Q', 'W', 'E', 'A', 'S', 'D', 'Z', 'X', 'C'];
-import sounds from '../../sounds';
+const keys = [
+    { 'letter': 'Q', 'name': "boom", 'color': 'blue' },
+    { 'letter': 'W', 'name': "clap", 'color': 'green' },
+    { 'letter': 'E', 'name': "hihat", 'color': 'yellow' },
+    { 'letter': 'A', 'name': "kick", 'color': 'pink' },
+    { 'letter': 'S', 'name': "openhat", 'color': 'green' },
+    { 'letter': 'D', 'name': "ride", 'color': 'blue' },
+    { 'letter': 'Z', 'name': "snare", 'color': 'yellow' },
+    { 'letter': 'X', 'name': "tink", 'color': 'pink' },
+    { 'letter': 'C', 'name': "tom", 'color': 'green' }
+];
 
 function Drum() {
     const handleUserKeyPress = useCallback(event => {
@@ -24,7 +33,6 @@ function Drum() {
             });
         }
     }, []);
-
     useEffect(() => {
         window.addEventListener('keydown', handleUserKeyPress);
 
@@ -32,28 +40,15 @@ function Drum() {
             window.removeEventListener('keydown', handleUserKeyPress);
         };
     }, [handleUserKeyPress]);
-
     return (
         <div id="container">
-            {/* {display} */}
             <div className="row">
                 <span id="display">Start pressing a key to get started</span>
             </div>
             <div className="row">
-                <Key color="blue" sound={sounds.boom} letter="Q" />
-                <Key color="yellow" sound={sounds.clap} letter="W" />
-                <Key color="green" sound={sounds.hihat} letter="E" />
-
-            </div>
-            <div className="row">
-                <Key color="pink" sound={sounds.kick} letter="A" />
-                <Key color="blue" sound={sounds.openhat} letter="S" />
-                <Key color="yellow" sound={sounds.ride} letter="D" />
-            </div>
-            <div className="row">
-                <Key color="green" sound={sounds.snare} letter="Z" />
-                <Key color="pink" sound={sounds.tink} letter="X" />
-                <Key color="pink" sound={sounds.tom} letter="C" />
+                {keys.map((key, i) => {
+                    return [<Key color={key.color} name={key.name} key={i} letter={key.letter} />];
+                })}
             </div>
         </div>
     )
