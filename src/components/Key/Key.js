@@ -17,14 +17,14 @@ function Key(props) {
             audio.currentTime = 0;
             audio.play();
             const display = document.getElementById("display");
-            display.textContent = audio.getAttribute("id");
+            display.textContent = audio.getAttribute("data-name");
         }
         setClick(true);
     }
     return (
         <div className="column">
-            <div id={props.letter} data-name={props.name} className={'drum-pad box ' + props.color + (click ? "" : " clicked")} onClick={handleClick}>
-                <audio className="clip" id={props.letter}
+            <div id={props.letter} className={'drum-pad box ' + props.color + (click ? "" : " clicked")} onClick={handleClick}>
+                <audio className="clip" id={props.letter} data-name={props.name}
                     src={require('../../sounds/' + props.name + ".wav")}>
                     Your browser does not support the
                     <code>audio</code> element.

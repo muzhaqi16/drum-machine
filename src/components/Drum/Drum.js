@@ -26,7 +26,7 @@ function Drum() {
                         pad.parentElement.classList.add("clicked");
                     }, 100);
                     const display = document.getElementById("display");
-                    display.textContent = pad.getAttribute("id");
+                    display.textContent = pad.getAttribute("data-name");
                     pad.currentTime = 0;
                     pad.play()
                 }
